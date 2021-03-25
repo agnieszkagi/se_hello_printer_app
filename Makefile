@@ -1,3 +1,6 @@
+SERVICE_NAME=hello-world-printer
+DOCKER_IMG_NAME=$(SERVICE_NAME)
+
 .PHONY : test
 #nie przejmuj sie jezeli istnieje plik albo folder o tej nazwie,
 #po prostu wykonaj komende i uruchom testy
@@ -17,20 +20,22 @@ lint:
 	flake8 hello_world test
 
 docker_build:
-	docker build -t hello-world-printer .
+	docker build -t $(DOCKER_IMG_NAME) .
 
 docker_run: docker_build
 	docker run \
-		--name hello-world-printer-dev \
-			-p 5000:5000 \ # wyeksponuj na zewn. dockera jako 5000
-			-d hello-world-printer
+		--name $(SERVICE_NAME)-dev \
+			-p 5000:5000 \
+			-d $(DOCKER_IMG_NAME)
+docker_stop:
+	docker stop $(SERVICE_NAME)-dev
 
 USERNAME=agnieszkagi
-TAG=$(USERNAME)/hello-world-printer
+TAG=$(USERNAME)/$(DOCKER_IMG_NAME)
 
 docker_push: docker_build
 	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
-	docker tag hello-world-printer $(TAG); \
+	docker tag $(DOCKER_IMG_NAME) $(TAG); \
 	docker push $(TAG); \
 	docker logout;
 
