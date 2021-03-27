@@ -1,5 +1,10 @@
 # Simple Flask App
 
+[![Build Status](https://travis-ci.com/agnieszkagi/se_hello_printer_app.svg?branch=master)](https://travis-ci.com/agnieszkagi/se_hello_printer_app)
+
+[![Build Status](https://app.statuscake.com/button/index.php?Track=5902165&Days=1&Design=5)](https://statuscake.com)
+
+
 Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
@@ -84,11 +89,3 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 ## Monitoring
 
 - Statuscake
-
-## TravicCI Badge
-
-[![Build Status](https://travis-ci.com/agnieszkagi/se_hello_printer_app.svg?branch=master)](https://travis-ci.com/agnieszkagi/se_hello_printer_app)
-
-## Statuscake Badge
-
-https://app.statuscake.com/button/index.php?Track=5902165&Days=1&Design=2
