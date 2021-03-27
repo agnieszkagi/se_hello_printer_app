@@ -25,6 +25,7 @@ class FlaskrTestCase(unittest.TestCase):
             b"""<greetings><name>Agnieszka</name>
 <msg>Hello World!</msg></greetings>""", rv.data
         )
+        #TODO: Zmienic oba na xmla i wtedy sprawdzic
 
     def test_cytat_dnia(self):
         rv = self.app.get('/cytatdnia')
