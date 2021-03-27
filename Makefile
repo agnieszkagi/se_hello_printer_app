@@ -17,7 +17,10 @@ run:
 	PYTHONPATH=. FLASK_APP=hello_world flask run
 
 lint:
-	flake8 hello_world test
+	black hello_world test
+
+make lint_check:
+	black --check hello_world test
 
 docker_build:
 	docker build -t $(DOCKER_IMG_NAME) .

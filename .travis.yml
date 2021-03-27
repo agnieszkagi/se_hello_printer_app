@@ -7,6 +7,10 @@ install:
   - make deps
 scripts:
   - make test
-  - make lint
+  - make lint_check
   - make docker_build
   - make docker_push
+deploy:
+  provider: heroku
+  app: aqueous-badlands-64711
+  api_key: ${HEROKU_API_KEY}
