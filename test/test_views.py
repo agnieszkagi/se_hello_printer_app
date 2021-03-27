@@ -5,28 +5,29 @@ from hello_world.formater import SUPPORTED
 
 class FlaskrTestCase(unittest.TestCase):
     def setUp(self):
-        app.config['TESTING'] = True
+        app.config["TESTING"] = True
         self.app = app.test_client()
 
     def test_outputs(self):
-        rv = self.app.get('/outputs')
+        rv = self.app.get("/outputs")
         s = str(rv.data)
-        ','.join(SUPPORTED) in s
+        ",".join(SUPPORTED) in s
 
     def test_msg_with_output_json(self):
-        rv = self.app.get('/?output=json')
+        rv = self.app.get("/?output=json")
         self.assertEqual(
             b'{"imie": "Agnieszka", "msg": "Hello World!"}', rv.data
         )
 
     def test_msg_with_output_xml(self):
-        rv = self.app.get('/?output=xml')
+        rv = self.app.get("/?output=xml")
         self.assertEqual(
             b"""<greetings><name>Agnieszka</name>
-<msg>Hello World!</msg></greetings>""", rv.data
+<msg>Hello World!</msg></greetings>""",
+            rv.data,
         )
-        #TODO: Zmienic oba na xmla i wtedy sprawdzic
+        # TODO: Zmienic oba na xmla i wtedy sprawdzic
 
     def test_cytat_dnia(self):
-        rv = self.app.get('/cytatdnia')
-        self.assertEqual(b'Carpe Diem!', rv.data)
+        rv = self.app.get("/cytatdnia")
+        self.assertEqual(b"Carpe Diem!", rv.data)
