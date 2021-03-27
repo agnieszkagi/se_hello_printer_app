@@ -1,4 +1,4 @@
 mock
 pytest
-black
+black-20.8
 pytest-cov
