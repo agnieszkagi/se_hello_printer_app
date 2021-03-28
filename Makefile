@@ -6,8 +6,8 @@ DOCKER_IMG_NAME=$(SERVICE_NAME)
 #po prostu wykonaj komende i uruchom testy
 
 deps:
-	pip install -r requirements.txt; \
-	pip install -r test_requirements.txt
+	pip3 install -r requirements.txt; \
+	pip3 install -r test_requirements.txt
 
 test:
 	#PYTHONPATH=. py.test; \
