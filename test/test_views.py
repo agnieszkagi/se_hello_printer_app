@@ -2,6 +2,7 @@ import unittest
 from hello_world import app
 from hello_world.formater import SUPPORTED
 import json
+import xml.etree.cElementTree as ET
 
 
 class FlaskrTestCase(unittest.TestCase):
@@ -22,12 +23,11 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_msg_with_output_xml(self):
         rv = self.app.get("/?output=xml")
-        self.assertEqual(
-            b"""<greetings><name>Agnieszka</name>
-<msg>Hello World!</msg></greetings>""",
-            rv.data,
-        )
-        # TODO: Zmienic oba na xmla i wtedy sprawdzic
+        greetings = ET.Element("greetings")
+        name = ET.SubElement(greetings, "name").text = "Agnieszka"
+        message = ET.SubElement(greetings, "msg").text = "Hello World!"
+        s = ET.tostring(greetings)
+        self.assertEqual(s, rv.data)
 
     def test_cytat_dnia(self):
         rv = self.app.get("/cytatdnia")
